@@ -1,0 +1,21 @@
+<!--公用头部-->
+<nav id="nav">
+    <ul> 
+        <template v-for="val in navData">
+            <li v-if="val.show!=false" class="{{val.active}}">
+                <h3 v-on:click="clickList($event)" class="caption">
+                    <i class="icon">{{{val.icon}}}</i>{{val.title}}
+                    <i class="icon icon-arrow">&#xe604;</i>
+                </h3>
+                <!--二级菜单--> 
+                <ul class="sub-nav {{val.active&&'show'}}">
+                    <template v-for="subVal in val.subVal">
+                        <li v-if="subVal.show!=false" class="{{subVal.active}} {{subVal.class}}">
+                            <h4><a href="{{subVal.href}}">{{subVal.title}}</a></h4>
+                        </li> 
+                    </template>
+                </ul> 
+            </li>
+        </template>
+    </ul>
+</nav>
